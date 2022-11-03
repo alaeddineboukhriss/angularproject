@@ -25,10 +25,10 @@ pipeline
 
 
 
-        stage(' COPY ') {
+        /*stage(' COPY ') {
             steps {
             sh 'mv /var/lib/jenkins/workspace/angularproject/dist/angularappproject/. /var/www/angular_project/html/'
             }
-        }
+        }*/
      }
 }

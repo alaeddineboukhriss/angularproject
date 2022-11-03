@@ -11,12 +11,12 @@ pipeline
      
         }
         stage(' install node modules ') {
-            sh "npm install"
+            sh ' npm install' 
      
         }
 
         stage(' build ') {
-            sh "ng build --prod"
+            sh ' ng build --prod' 
      
         }
      }

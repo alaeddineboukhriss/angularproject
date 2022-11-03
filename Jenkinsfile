@@ -27,7 +27,7 @@ pipeline
 
         stage(' COPY ') {
             steps {
-            sh ' cp -a /var/lib/jenkins/workspace/angularproject/dist/angularappproject/. /var/www/angular_project/html/'
+            sh 'sudo cp -a /var/lib/jenkins/workspace/angularproject/dist/angularappproject/. /var/www/angular_project/html/'
             }
         }
      }

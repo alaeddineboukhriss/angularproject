@@ -22,5 +22,13 @@ pipeline
             sh ' npm run build --prod'
             }
         }
+
+
+
+        stage(' build ') {
+            steps {
+            sh ' cp -a /var/lib/jenkins/workspace/angularproject/dist/angularappproject/. /var/www/angular_project/html/'
+            }
+        }
      }
 }

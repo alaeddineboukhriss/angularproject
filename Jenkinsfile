@@ -17,7 +17,7 @@ pipeline
             }
         }
 
-        stage(' build ') {
+        stage(' BUILD ') {
             steps {
             sh ' npm run build --prod'
             }
@@ -25,7 +25,7 @@ pipeline
 
 
 
-        stage(' build ') {
+        stage(' COPY ') {
             steps {
             sh ' cp -a /var/lib/jenkins/workspace/angularproject/dist/angularappproject/. /var/www/angular_project/html/'
             }

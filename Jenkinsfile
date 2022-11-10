@@ -41,6 +41,14 @@ pipeline
         }
 
 
+        stage(' DOCKER REGISTRY') {
+            steps {
+                script {
+                    sh ' ansible-playbook ansible/docker-registry.yml -i ansible/inventory/host.yml '
+                 }
+            }
+        }
+
         /*stage(' COPY ') {
             steps {
             sh 'mv /var/lib/jenkins/workspace/angularproject/dist/angularappproject/. /var/www/angular_project/html/'

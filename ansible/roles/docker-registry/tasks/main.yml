@@ -1,0 +1,4 @@
+---
+# tasks file for docker
+-name: push image to hub
+ command: docker push alaboukhris/devops:latest

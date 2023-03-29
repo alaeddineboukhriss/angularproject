@@ -36,16 +36,16 @@ pipeline {
             steps {
                 script {
                    def extractBranchNameFromConsoleOutput() {
-                       def build = currentBuild.rawBuild
-                       def listener = currentBuild.listener
-                       def branchName = build.environment.get('BRANCH_NAME')
-                       if (branchName == null) {
-                           branchName = build.logFile.text =~ 'Checking out ([^ ]+) ' ?: 'unknown'
-                           if (branchName != 'unknown') {
-                               branchName = branchName[0][1]
-                           }
+                   def build = currentBuild.rawBuild
+                   def listener = currentBuild.listener
+                   def branchName = build.environment.get('BRANCH_NAME')
+                   if (branchName == null) {
+                       branchName = build.logFile.text =~ 'Checking out ([^ ]+) ' ?: 'unknown'
+                       if (branchName != 'unknown') {
+                           branchName = branchName[0][1]
                        }
-                       return branchName
+                   }
+                   return branchName
                    }
                 }
             }

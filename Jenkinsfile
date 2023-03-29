@@ -1,15 +1,17 @@
-/*pipeline
+pipeline
 {
     agent any
      stages {
       
         stage(' GIT ') {
             steps {
-                echo 'Pulliing ...';
-                git branch: 'master', url: 'https://github.com/alaeddineboukhriss/angularproject.git'          
+                echo 'Pulling...' + env.BRANCH_NAME
+                checkout scm          
             }
         }
-        stage('Extract branch name') {
+     }
+}  
+       /* stage('Extract branch name') {
             steps {
                 script {
                     def extractBranchNameFromConsoleOutput() {
@@ -27,8 +29,8 @@
             }
         }
      }
-}*/
-pipeline {
+}
+/*pipeline {
     agent any
 
     stages {
@@ -48,7 +50,7 @@ pipeline {
                    println "Le nom de la branche est ${branchName}"
                 }
             }
-        }
+        }*/
     }
 }
 

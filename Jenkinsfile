@@ -30,7 +30,7 @@
         }
      }
 }*/
-def getFirstWordFromGitBranch() {
+/*def getFirstWordFromGitBranch() {
     def gitBranch = sh(script: 'git rev-parse --abbrev-ref HEAD', returnStdout: true).trim()
     return gitBranch.tokenize('/')[0]
 }
@@ -56,7 +56,27 @@ pipeline {
         // Autres étapes de la pipeline
         // ...
     }
+}*/
+def extractFirstWordFromGitBranch(branchName) {
+    def firstWord = branchName.split('/')[0]
+    return firstWord
 }
+
+pipeline {
+    agent any
+    stages {
+        stage('Extract First Word from Git Branch') {
+            steps {
+                script {
+                    def branchName = sh(returnStdout: true, script: 'git rev-parse --abbrev-ref HEAD').trim()
+                    def firstWord = extractFirstWordFromGitBranch(branchName)
+                    echo "First word of Git branch is: ${firstWord}"
+                }
+            }
+        }
+    }
+}
+
 
 
 

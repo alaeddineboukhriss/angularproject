@@ -10,7 +10,7 @@ pipeline
             }
      
         }
-     /*  stage('Extract branch name') {
+        stage('Extract branch name') {
             steps {
                 script {
                     def extractBranchNameFromConsoleOutput() {
@@ -27,7 +27,7 @@ pipeline
                     println "Le nom de la branche est ${branchName}"
                 }
             }
-       stage(' install node modules ') {
+    /*   stage(' install node modules ') {
             steps {
             sh ' npm install' 
             

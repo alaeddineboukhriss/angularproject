@@ -41,11 +41,10 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                // Utilisation de la fonction pour récupérer le premier mot de la branche Git
-                def firstWord = getFirstWordFromGitBranch()
-                
-                // Autres étapes de la construction
-                // ...
+                script {
+                    def firstWord = getFirstWordFromGitBranch()
+                    // Utilisez la variable firstWord dans les étapes suivantes
+                }
             }
         }
         
@@ -53,6 +52,7 @@ pipeline {
         // ...
     }
 }
+
 
 
 

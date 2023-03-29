@@ -47,6 +47,11 @@ pipeline {
                 }
             }
         }
+        stage('Afficher la branche') {
+            steps {
+                echo "La branche active est : ${env.BRANCH_NAME}"
+            }
+        }
         
         // Autres étapes de la pipeline
         // ...

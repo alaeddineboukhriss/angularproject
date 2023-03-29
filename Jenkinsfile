@@ -68,7 +68,7 @@ pipeline {
         stage('Extract First Word from Git Branch') {
             steps {
                 script {
-                    def branchName = sh(returnStdout: true, script: 'git rev-parse --abbrev-ref HEAD').trim()
+                    def branchName = env.BRANCH_NAME
                     def firstWord = extractFirstWordFromGitBranch(branchName)
                     echo "First word of Git branch is: ${firstWord}"
                 }
@@ -76,6 +76,7 @@ pipeline {
         }
     }
 }
+
 
 
 

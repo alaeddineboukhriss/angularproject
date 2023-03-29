@@ -1,4 +1,4 @@
-pipeline
+/*pipeline
 {
     agent any
      stages {
@@ -11,7 +11,7 @@ pipeline
         }
      }
 }  
-       /* stage('Extract branch name') {
+        stage('Extract branch name') {
             steps {
                 script {
                     def extractBranchNameFromConsoleOutput() {
@@ -29,28 +29,22 @@ pipeline
             }
         }
      }
-}
-/*pipeline {
+}*/
+pipeline {
     agent any
 
     stages {
         stage('Extract branch name') {
             steps {
                 script {
-                   def extractBranchNameFromConsoleOutput = {
-                   def consoleOutput = currentBuild.rawBuild.getLog(1000)
-                   def branchName = consoleOutput =~ /origin\/(\S+)/
-                   if (branchName) {
-                       return branchName[0][1]
-                   } else {
-                       return ""
-                   }
-                   }
-                   def branchName = extractBranchNameFromConsoleOutput()
-                   println "Le nom de la branche est ${branchName}"
+                  def branch_nem = scm.branches[0].name
+                  if (branch_nem.contains("*/")) {
+                  branch_nem = branch_nem.split("\\*/")[1]
+                  }
+                  echo branch_nem
                 }
             }
-        }*/
+        }
     }
 }
 

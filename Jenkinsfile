@@ -35,7 +35,7 @@ pipeline {
         stage('Extract branch name') {
             steps {
                 script {
-                   def extractBranchNameFromConsoleOutput() {
+                   def extractBranchNameFromConsoleOutput = {
                    def build = currentBuild.rawBuild
                    def listener = currentBuild.listener
                    def branchName = build.environment.get('BRANCH_NAME')

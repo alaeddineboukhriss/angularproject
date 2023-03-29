@@ -31,29 +31,28 @@
      }
 }*/
 def getFirstWordFromGitBranch() {
-def gitBranch = sh(script: 'git rev-parse --abbrev-ref HEAD', returnStdout: true).trim()
-return gitBranch.tokenize('/')[0]
+    def gitBranch = sh(script: 'git rev-parse --abbrev-ref HEAD', returnStdout: true).trim()
+    return gitBranch.tokenize('/')[0]
 }
+
 pipeline {
     agent any
-
+    
     stages {
-        stage('branch name') {
+        stage('Build') {
             steps {
-                script {
-                  def branch_nem = scm.branches[0].name
-                  if (branch_nem.contains("*/")) {
-                  branch_nem = branch_nem.split("\\*/")[1]
-                  }
-                  echo branch_nem
-                }
+                // Utilisation de la fonction pour récupérer le premier mot de la branche Git
+                def firstWord = getFirstWordFromGitBranch()
+                
+                // Autres étapes de la construction
+                // ...
             }
         }
-        stage('extract branch name') {
-            steps {
-                def firstWord = getFirstWordFromGitBranch()
-            }
-        }  
+        
+        // Autres étapes de la pipeline
+        // ...
     }
 }
+
+
 

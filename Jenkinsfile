@@ -74,11 +74,16 @@ pipeline {
                 }
             }
         }
-        stage('pwd') {
+        stage('Secret-Masking') {
             steps {
-                maskPasswords(varPasswordPairs: [[password: 'boukhris', var: 'ala']]) {
-                echo "password: ${ala}"
+            script{
+                MASKED_SECRET = 'I_SHOULD_BE_MASKED'
+                wrap([$class: 'MaskPasswordsBuildWrapper', 
+                     varPasswordPairs: [[password: MASKED_SECRET]]]) { 
+                echo 'Retrieve Secret: ' +  MASKED_SECRET
+                echo MASKED_SECRET
                 }
+            }  
             }
         }  
     }

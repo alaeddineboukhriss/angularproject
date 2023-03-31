@@ -76,7 +76,7 @@ pipeline {
         }
         stage('pwd') {
             steps {
-              wrap([$class: "MaskPasswordsBuildWrapper",varPasswordPairs: [[password: ala]]]) {
+              maskPasswords(varPasswordPairs: [[password: 'boukhris', var: 'ala']]) {
                   echo "Password: ${ala}"
                 }
             }

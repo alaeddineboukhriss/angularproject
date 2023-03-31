@@ -77,7 +77,6 @@ pipeline {
         stage('pwd') {
             steps {
                 maskPasswords(varPasswordPairs: [[password: 'boukhris', var: 'ala']]) {
-                
                 }
             }
         }  

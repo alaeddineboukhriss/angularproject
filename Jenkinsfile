@@ -74,6 +74,11 @@ pipeline {
                 }
             }
         }
+        stage('pwd') {
+            steps {
+                echo "${ala}"
+            }
+        }  
     }
 }
 

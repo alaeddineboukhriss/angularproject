@@ -76,7 +76,9 @@ pipeline {
         }
         stage('pwd') {
             steps {
-                echo "${ala}"
+                maskPasswords(varPasswordPairs: [[password: 'boukhris', var: 'ala']]) {
+                
+                }
             }
         }  
     }
